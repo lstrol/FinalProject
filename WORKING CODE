@@ -143,3 +143,27 @@ def show_tracks(results):
 #Step 5 find how many tracks the two playlists have in common
 
 #Step 6 create dataframe with percentage of similarity
+def get_user_playlists(token, username):
+	headers = {"Authorization": "Bearer %s" % token}
+	playlist_url = 'https://api.spotify.com/v1/users/%s/playlists' % username
+	response = requests.get(url=playlist_url, headers=headers)
+
+	if response.status_code == requests.codes.ok:
+		return response.json()
+	else:
+		response_error = json().loads(response.text).get('error')
+		msg = "Error getting {0} 's playlists: {1}" .format(username, response_error)
+		raise SpotifyApiError(msg)
+
+def get_playlist_track_urls(playlists, username):
+	track_urls = []
+	items = playlists.get('items')
+
+	for item in items:
+		if item.get('owner').get('id') != username:
+			continue
+		else: 
+			tracks = item.get('tracks')
+			tracks_url = tracks.get('href')
+			track_urls.append(tracks_url)
+	return track_urls

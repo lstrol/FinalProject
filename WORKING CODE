@@ -1,0 +1,145 @@
+pip install spotipy --user
+
+pip freeze
+
+!pip install -q requests
+import requests
+import json 
+!spotipy
+
+import requests 
+r= requests.get
+https://accounts.spotify.com/authorize?client_id=59737fd0501a478b9700df52f3517221&response_type=code&redirect_uri=http%3A%2F%2Fgoogle.com%2F%0A
+
+import os
+import sys
+import json
+import spotipy
+import urllib3
+import spotipy.util as util
+from json.decoder import JSONDecodeError
+import pandas as pd
+
+util.prompt_for_user_token('<user_id>',client_id='<client_id>',client_secret='<client_secret>',redirect_uri='localhost:3000/callback/')
+
+import spotipy
+import spotipy.util as util
+
+username = 'lucindatoreo'
+scope = 'user-library-read'
+scope = 'playlist-modify-public'
+
+CLIENT_ID = '59737fd0501a478b9700df52f3517221'
+CLIENT_SECRET = '458823422e7141eeaeb0d2ea760e5c77'
+
+playlist_id = '0fgcKQHfx8D5nh2NitnA9A'
+
+token = util.prompt_for_user_token(username, 
+                                   scope,
+                                   client_id=CLIENT_ID,
+                                   client_secret=CLIENT_SECRET,
+                                   redirect_uri='http://google.com/')
+
+sp = spotipy.Spotify(auth=token)
+
+scope = 'user-library-modify'
+util.prompt_for_user_token(username,scope,client_id='59737fd0501a478b9700df52f3517221',client_secret='458823422e7141eeaeb0d2ea760e5c77',redirect_uri='myfinalproject123://returnafterlogin')
+
+set spotify_clientid= "59737fd0501a478b9700df52f3517221"
+set spotify_client_secret= "458823422e7141eeaeb0d2ea760e5c77"
+
+#IMPORT MODULES 
+import os
+import sys
+import json
+import spotipy
+import urllib3
+import spotipy.util as util
+from json.decoder import JSONDecodeError
+import pandas as pd
+
+util.prompt_for_user_token('lucindatoreo',client_id='59737fd0501a478b9700df52f3517221',client_secret='458823422e7141eeaeb0d2ea760e5c77',redirect_uri='http:/google/com/')
+url = 'https://accounts.spotify.com/authorize?client_id=59737fd0501a478b9700df52f3517221&response_type=code&redirect_uri=http%3A%2F%2Fgoogle.com%2F%0A'
+response = requests.get(url)
+
+response.ok
+
+import os
+import sys
+import json
+import spotipy
+import webbrowser
+import spotipy.util as util
+from json.decoder import JSONDecodeError
+
+#Get the username from the terminal
+username = lucindatoreo
+
+#User ID: lucindatoreo
+
+#Erase cache and prompt for permission
+
+try:
+    token = util.prompt_for_user_token(username)
+except: 
+    os.remove(f".cache-(username)")
+    token = util.prompt_for_user_token(username)
+    
+#Create spotify object
+spotifyObject= spotipy.Spotify(auth=token)
+
+#CLIENT CREDENTIALS
+sp = spotipy.Spotify()
+from spotipy.oauth2 import SpotifyClientCredentials
+cid ="59737fd0501a478b9700df52f3517221"
+secret = "458823422e7141eeaeb0d2ea760e5c77"
+client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
+
+#Step 2 SEARCH PLAYLIST CONTENTS
+
+import sys
+import os
+import spotipy
+import spotipy.util as util
+
+set spotify_client_id="59737fd0501a478b9700df52f3517221"
+set spotify_client_secret="458823422e7141eeaeb0d2ea760e5c77"
+
+spotify_client_id= "59737fd0501a478b9700df52f3517221"
+spotify_client_secret= "458823422e7141eeaeb0d2ea760e5c77"
+spotify_redirect_uri= "myfinalproject123://returnafterlogin"
+
+def show_tracks(results):
+    for i, item in enumerate(tracks['items']):
+        track = item['track']
+        print("   %d %32.32s %s" % (i, track['artists'][0]['name'], track['name']))
+
+    token = util.prompt_for_user_token('lucindatoreo')
+
+    if token:
+        top = 40
+        sp = spotipy.Spotify(auth=token)
+        playlists = sp.user_playlists(username)
+        for playlist in playlists['items']:
+            if playlist['owner']['id'] == username:
+                print()
+                print(playlist['name'])
+                print('  total tracks', playlist['tracks']['total'])
+                results = sp.user_playlist(username, playlist['id'], fields="tracks,next")
+                tracks = results['tracks']
+                show_tracks(tracks)
+                while tracks['next']:
+                    tracks = sp.next(tracks)
+                    show_tracks(tracks)
+    else:
+        print("Can't get token for", username)
+        
+#Step 2 search playlist
+
+#Step 3 look through the playlist contents
+
+#Step 4 serch another playlist and look through contents 
+
+#Step 5 find how many tracks the two playlists have in common
+
+#Step 6 create dataframe with percentage of similarity
